@@ -1,74 +1,91 @@
-<html lang="ja">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>Kamo's Page</title>
-
-        <script src="main.js" defer></script>
-
-        <!--        <link rel="icon" href="">-->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TM-Lab.</title>
+    <script type="text/javascript" src="./sha256.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./main.css">
+</head>
 
 
-
-
-
-    <body class="body-margin">
-
-
-       <!-- ナビゲーションメニュー -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand text-dark" href="#">Kamo's Page</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ">
-                    <a class="nav-link text-dark" href="#">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-link text-dark" href="./works.html">Works</a>
+<body>
+    <!--送信フォームのクラス-->
+    <div class="container d-flex justify-content-center" style="margin-top: 20px">
+        <div class="form">
+            <form id="form" action="#">
+                <div class="text-input">
+                    <label for="password">Password</label>
+                        <input type="password" placeholder="Insert Password" id="password">
+                    <span class="separator"> </span>
                 </div>
-            </div>
-        </nav>
 
-
-        <h1 style="text-align:center">
-            <span style="color: black">
-            <b>Kamo</b>
-            </span>
-        </h1>
-
-        <div class="box">
-            <div class="container">
-                <div class="d--flex justify-content-start">
-                            <div class="alert alert-success" role="alert">
-                              <strong>Oops!!</strong>
-                              This page is under construction.
-                            </div>
+                <div class="form-bottom">
+                    <input type="button" id="submit" value="Submit"/>
                 </div>
-            </div>
+            </form>
         </div>
+    </div>
+
+    <div class="container d-flex justify-content-center" style="margin-top: 1rem">
+        <p id="message" class="message">
+            Please login.
+        </p>
+    </div>
 
 
+    <footer class="text-center bg-dark text-white fixed-bottom">
+        <p class="py-2" style="margin-bottom: 0">
+            <b>Login Page</b>
+        </p>
+        <p class="address" style="margin-bottom: 2px">
+<!--            秋田大学 大学院理工学研究科 理工学部1号館 3階 333室-->
+        </p>
+    </footer>
+
+</body>
 
 
+<script>
+    function hash(text) {
+        const sha = new jsSHA('SHA-256', 'TEXT');
+        sha.update(text);
+        return sha.getHash('HEX');
+    }
 
+    function auth(password) {
+        const url = hash(password);
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send();
+        xhr.onload = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                window.location = url;
+            } else {
+                const message = document.getElementById('message');
+                const input = document.getElementById('password');
+                message.innerHTML = 'Wrong password! Try again.';
+                input.value = '';
+            }
+        };
 
-        <!--    フッター -->
-        <footer class="text-center bg-dark text-white fixed-bottom">
-            <p class="py-3">
-                <b>Kamo's Page</b>
-            </p>
-        </footer>
+        xhr.onerror = function () {
+            const message = document.getElementById('message');
+            message.innerHTML = 'Sorry, ERROR !';
+        };
+    }
 
+    // const form = document.getElementById('form');
+    const btn = document.getElementById('submit')
+    btn.addEventListener('click', function (event) {
+        const password = document.getElementById('password').value;
+        auth(password);
+        event.preventDefault();
+    });
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
+</script>
+
 </html>

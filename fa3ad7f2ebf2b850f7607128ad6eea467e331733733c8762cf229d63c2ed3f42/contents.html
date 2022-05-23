@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Contents</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+
+<body onload="prettyPrint()">
+    <!-- ナビゲーションメニュー -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-dark" href="./index.html">KMZW </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+            <div class="navbar-nav ">
+                <a class="nav-link text-dark" href="./index.html">Home </a>
+                <a class="nav-link text-dark" href="#">Contents <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-dark" href="./doc.html">Packages </a>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="d-flex justify-content-start row border-bottom section">
+            学習用スライド
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-flex justify-content-start row">
+            <p class="main-text">
+                勉強の際にできた副産物のスライドなどを公開します。随時更新していきます。<br>
+                ただし，市販されている本や学術書の引用が多すぎて権利的な問題がありそうなのでパスワードをかけています。<br>
+                見たい方は私本人にパスワードを聞いてください。
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex mx-auto" style="margin-top: 1rem">
+            <ul>
+                <li>
+                    <p><a href="../contents/G検定.pptx">G検定（ディープラーニング ジェネラリスト検定） （最終更新日2022-05-22）</a></p>
+
+                </li>
+                <li>
+                    <p><a>基本情報技術者試験（工事中）</a></p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex justify-content-start row border-bottom section">
+            機械学習をやってみよう！（2022-05-23更新）
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-flex justify-content-start row main-text">
+            <p class="align-main">
+            研究テーマによっては機械学習を利用することがありますが，いきなり学習データを作ってモデルを作って全部やるのは大変です。<br>
+            <strong>畳み込みニューラルネットワーク（CNN）を用いた簡単な画像分類問題を通して，機械学習の基礎を習得しましょう。</strong><br>
+<!--            ほかにもわかりやすく解説しているサイトはたくさんあります。それも参考にしつつ取り組んでみてください。<br>-->
+            ここではPythonの利用を想定しています。Pythonの環境がない，環境の作り方が分からないという方は<a href="./python.html" class="LinkInline">こちら</a>を参考にしてください。</p>
+        <p class="align-main">
+            全部読むのが面倒くさいという人向けに，最後の方にサンプルコードを貼っています。<br>
+            とりあえず動いた！ できた！ という体験をしてみてください。<br>
+            （あまりにも分からない場合は直接聞いてください，適宜修正していきます。）
+        </p>
+        </div>
+    </div>
+
+
+
+<!--アコーディオン-->
+    <div class="container">
+    <div class="justify-content-start main-text">
+    <div class="accordion" id="machine-learning">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button accordion-section" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    1. データセットと使用パッケージの確認
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#machine-learning">
+                <div class="accordion-body">
+                    オリジナルの文字認識データセットを使って，手書き文字の「B，D，E，L，T」を分類してみましょう！<br>
+                    （この5文字だけ分類できても実用上意味はありませんが…）<br>
+                    まずは，以下リンクからデータセット（.zip）をダウンロードし，分かりやすい場所へ解凍してください。（自作です。二次配布を許可します。）
+                    <p><a href="../contents/手書き文字認識データセット.zip">手書き文字認識データセット.zip（308 KB）</a></p>
+
+                    データセットには，以下のような50×50ピクセルの画像がpng形式で70枚ずつ，計350枚含まれています。
+                    <div class="container align-main" style="margin-top: 1rem">
+                        <div class="row">
+                            <div class="col">
+                                <img src="../contents/B68.png" alt="Bの例">
+                            </div>
+                            <div class="col">
+                                <img src="../contents/D50.png" alt="Dの例">
+                            </div>
+                            <div class="col">
+                                <img src="../contents/E45.png" alt="Eの例">
+                            </div>
+                            <div class="col">
+                                <img src="../contents/L69.png" alt="Lの例">
+                            </div>
+                            <div class="col">
+                                <img src="../contents/T58.png" alt="Tの例">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1rem">
+                        データセットをダウンロードできたら，次はPython側のパッケージの確認です。
+                        ここでは，以下のPythonパッケージを使用します。<br>
+                        もしインストールされていない場合は，<a href="./python.html" class="LinkInline">こちら</a>を参考にインストールしてください。</p>
+                    <div class="d-flex justify-content-start row main-text" style="margin-top: -0.5rem">
+                        <ul>
+                            <li>Numpy</li>
+                            <li>Pillow（PIL）</li>
+                            <li>scikit-learn（sklearn）</li>
+                            <li>keras</li>
+                            <li>tensorflow</li>
+                        </ul>
+                    </div>
+
+                    Pythonコンソール上でimportし，エラーが出なければOKです。
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed accordion-section" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    2. 画像データの読み込み
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#machine-learning">
+                <div class="accordion-body">
+
+                    ここからはPythonコードを書いていきます。<br>
+                    ダウンロードした手書き文字データを学習データとして使用するためには，
+                    全ての画像データを1つの配列としてまとめる必要があります。<br>
+                    ダウンロードしたデータセットのフォルダは次のような構成になっており，
+                    画像はそれぞれバラバラです。
+
+                    <div style="text-align: center">
+                        <img src="../contents/dataset_struct.png" alt="データセットのフォルダ構成"
+                             width="430" height="304">
+                    </div>
+
+                    <p>このようなファイルをまとめて取得するのに役立つのが，"glob"というモジュールです。
+                    <br>
+                    たとえば，</p>
+                    <pre class="prettyprint"><code>
+ import glob
+ files = glob.glob('データセットのフォルダがあるパス/手書き文字認識データセット/*')</code></pre>
+                    <p>
+                    と書くと，変数"files"に「B，D，E，L，T」それぞれへのパスが格納されたリストが渡されます。<br>
+                    また例えば，</p>
+                    <pre class="prettyprint"><code>
+ files = glob.glob('データセットのフォルダがあるパス/手書き文字認識データセット/B/*.png')</code></pre>
+                    とすれば，「B」の画像のパスを全て取得できます。ちなみに*はワイルドカード表現といいます。興味ある人は調べてみてね。<br>
+                    このようにして取得されたパスのリストに対してループを回せば，画像をまとめて配列にできそうですね。<br>
+                    <p>
+                    実際に，すべての画像をまとめるコードを示します。
+                    ただし，プログラムとデータセットは同じ階層にあることを前提としています。</p>
+                    <pre class="prettyprint"><code>
+ import numpy as np
+ import glob
+ from PIL import Image
+
+ img = []  # 空の配列（入れ物）を宣言
+ label = []
+ files = glob.glob('手書き文字認識データセット/*')  # B, D, E, L, Tへのパスを取得
+ for i, f in enumerate(files):
+     categ = glob.glob(f+'/*.png')  # 1.png, 2.png, ... ,70.pngすべてのパスを取得
+     for j in range(len(categ)):  # それぞれの画像についてループを回す
+         tmp = np.asarray(Image.open(categ[j]))  # 画像をopenして配列化
+         img.append(tmp[:, :, 0])  # リストに画像を追加
+         label.append(i)  # 正解ラベル
+
+ img = np.array(img)/255  # 画像は0～255までの輝度値になっているので，0～1の範囲に正規化する
+ img = img.reshape((350, 50, 50, 1))  # （個数, 縦，横，チャネル）の形にリシェイプする
+
+</code></pre>
+                    <p>
+                        最終的に画像（学習データ）は"img"に，正解ラベルは"label"に格納されています。<br>
+                        <strong>学習データは，基本的に（個数, 縦，横，チャネル）の形にしてまとめます。</strong><br>
+                        ここで言うチャネルとは，いわゆるRGBのようなグラデーションの数だと思ってください。<br>
+                        今回は白黒画像ですから，チャネル数は1になります。
+                    </p>
+                    機械学習において<strong>正解ラベルは数字で管理します。</strong><br>
+                    そのため，B→0，D→1, ...のような連番のリストとして作成しています。
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed accordion-section" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    3. 学習・検証データの作成
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#machine-learning">
+                <div class="accordion-body">
+                    <p>
+                        全ての画像データを学習に使用することはありません。<br>
+                        学習データ（Training Data）で訓練しつつ，「検証データ（Validation Data）」での成績から，
+                        間違いを減らしていく作業を行います。<br>
+                        学習データが<strong>問題集</strong>，
+                        検証データが<strong>学力テスト</strong>といったところです。<br>
+                    </p>
+                    <p>
+                        基本的には，学習データをランダムに25%ほど選択し，検証用に充てるのが一般的です。<br>
+                    </p>
+                    <p>
+                        このような作業は，scikit-learnモジュールのtrain_test_split()で実現できます。
+                    </p>
+                    <pre class="prettyprint"><code>
+ from sklearn.model_selection import train_test_split
+ xt, xv, yt, yv = train_test_split(img, np.array(label, np.int),
+                                   test_size=0.25,
+                                   shuffle=True, stratify=np.array(label, np.int))
+                    </code></pre>
+                    <p>
+                        このように書くことでデータを分割することができます。<br>
+                        この例では，xt，ytがそれぞれ学習用のデータとラベル，
+                        xv, yvが検証用のデータとラベルに対応します。<br>
+                        test_sizeにはデータを分割する際の比率を入力します。
+                        shuffleをTrueにすると，毎回ランダムに選択されます。
+                    </p>
+                    <p>
+                        学習の準備は整いました。次は，CNNを構築してみましょう。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed accordion-section" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    4. CNNの構築
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#machine-learning">
+                <div class="accordion-body">
+                    <p>
+                        基本的な構造のCNNを構築してみましょう。
+                        ここでは，LeNetとよばれるCNN構造を採用していきます。
+
+                    </p>
+
+                    <pre class="prettyprint"><code>
+ from keras.layers.convolutional import Conv2D, MaxPooling2D
+ from keras.models import Sequential
+ from keras.layers import Dense, Dropout, Activation, Flatten
+
+ model = Sequential()  # 一直線のモデル という意味
+ model.add(Conv2D(filters=16, kernel_size=(4, 4), padding='same',
+                  input_shape=(50, 50, 1)))  # 画像の形状（縦，横，チャネル）を指定
+ model.add(Activation('relu'))  # 活性化関数
+ model.add(MaxPooling2D(pool_size=(2, 2), padding='same'))
+
+ model.add(Conv2D(filters=32, kernel_size=(3, 3), padding='same'))
+ model.add(Activation('relu'))
+ model.add(MaxPooling2D(pool_size=(2, 2), padding='same'))
+
+ model.add(Flatten())  # 1次元に展開
+ model.add(Dense(units=32, activation='relu'))  # 全結合層
+ model.add(Dropout(0.5))
+ model.add(Dense(units=5, activation='softmax'))  # 出力層
+                    </code></pre>
+                    <p>
+                        CNNでは，"畳み込み→活性化→プーリング（圧縮）"をひとまとまりとして，幾つか繰り返すのが一般的です。<br>
+                        上の例は，2回繰り返した後，全結合層に通す最も基本的な構造です。<br>
+                    </p>
+                    <p>
+                        filtersは畳み込むフィルタの枚数，kernel_sizeはフィルタの大きさを表します。<br>
+                        pool_sizeはどれくらい圧縮するかを決めます。（2, 2）ならば，縦横半分に圧縮されます。<br>
+                    </p>
+                    <p>
+                        出力層の手前に挿入しているDropoutとよばれる層では，一定確率でランダムにニューロンが無視されます。
+                        そのため，アンサンブル学習をしていることと等価であり，オーバーフィットしにくいことが知られています。<br>
+                        今回は5つの文字の分類なので，最後の層のunit数は5とします。
+                    </p>
+
+                    <p>
+                        構築したモデルは，model.summary()とすることで詳細を確認できます。
+                    </p>
+                    <pre class="prettyprint"><code>
+ >> model.summary()
+
+ Model: "sequential_1"
+ _________________________________________________________________
+ Layer (type)                 Output Shape              Param #
+ =================================================================
+ conv2d_1 (Conv2D)            (None, 50, 50, 16)        272
+ _________________________________________________________________
+ activation_1 (Activation)    (None, 50, 50, 16)        0
+ _________________________________________________________________
+ max_pooling2d_1 (MaxPooling2 (None, 25, 25, 16)        0
+ _________________________________________________________________
+ conv2d_2 (Conv2D)            (None, 25, 25, 32)        4640
+ _________________________________________________________________
+ activation_2 (Activation)    (None, 25, 25, 32)        0
+ _________________________________________________________________
+ max_pooling2d_2 (MaxPooling2 (None, 13, 13, 32)        0
+ _________________________________________________________________
+ flatten_1 (Flatten)          (None, 5408)              0
+ _________________________________________________________________
+ dense_1 (Dense)              (None, 32)                173088
+ _________________________________________________________________
+ dropout_1 (Dropout)          (None, 32)                0
+ _________________________________________________________________
+ dense_2 (Dense)              (None, 5)                 165
+ =================================================================
+ Total params: 178,165
+ Trainable params: 178,165
+ Non-trainable params: 0
+ _________________________________________________________________
+                    </code></pre>
+                    <p>
+                        ここらへんの話はなかなか理解しづらいと思いますが，そんなもんなんだな～と気楽に構えてください。<br>
+                        もう少し詳しい説明は，上のスライドを参照してください。
+                    </p>
+                    <p>
+                        さて，いよいよ学習です！
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed accordion-section" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    5. 手書き文字画像の学習
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#machine-learning">
+                <div class="accordion-body">
+                    <p>
+                        先ほど構築したモデルをコンパイルし，学習させてみましょう。<br>
+                        コンパイルは以下のように行います。
+                    </p>
+                    <pre class="prettyprint"><code>
+  model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
+                    </code></pre>
+                    <p>
+                        optimizerは最適化アルゴリズムを指定しますが，特別な理由がない限り，Adamで問題ありません。<br>
+                        lossは損失関数を指定します。多クラス分類問題の場合は，"categorical_crossentopy"を指定します。<br>
+                        2値分類であれば，"binary_crossentropy"とします。
+
+                    </p>
+                    <p>
+                        では，早速学習してみましょう。
+                    </p>
+                    <pre class="prettyprint"><code>
+ from keras.utils import np_utils
+ model.fit(x=xt, y=np_utils.to_categorical(yt, 5),
+           batch_size=16,
+           epochs=30,
+           validation_data=(xv, np_utils.to_categorical(yv, 5)),
+           )
+                    </code></pre>
+                    <p>
+                        batch_sizeでは，データを一気に何個入れるかを決めます。<br>
+                        epochsは学習回数です。すべてのデータを使い切ったとき，1epochと数えます。<br>
+                        ここの数値は試行錯誤しながら変えてみてください。
+                    </p>
+                    <p>
+                        学習は，このように推移するはずです（この図自体は表示されません！）。
+                        <div style="text-align: center; margin-top: -1rem">
+                            <img src="../contents/history.png" alt="学習曲線" width="448" height="336">
+                        </div>
+                        データ数が少ないので100%とまではいきませんが，80%以上の精度で分類できています。<br>
+                        基本的にlossの値が減少していれば，学習はうまくいっています。<br>
+                        なお，
+                    </p>
+                    <pre class="prettyprint"><code>
+ model.save('保存したい場所のパス/保存名.h5')
+                    </code></pre>
+                    <p>
+                        と記述すれば，学習済みのモデルを保存できます（拡張子は何でもいいっぽい？）。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+                <button class="accordion-button collapsed accordion-section" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    一連のコード
+                </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#machine-learning">
+                <div class="accordion-body">
+                    <p>
+                        データ処理から学習までの，一連のコードを貼っておきます。<br>
+                        おまけとして，学習中に自動で学習曲線を表示するコールバック関数を追加しておきました。
+                    </p>
+                    <pre class="prettyprint"><code>
+ import numpy as np
+ import glob
+ from PIL import Image
+ import matplotlib.pyplot as plt
+
+ from sklearn.model_selection import train_test_split
+ from keras.layers.convolutional import Conv2D, MaxPooling2D
+ from keras.models import Sequential
+ from keras.layers import Dense, Dropout, Activation, Flatten
+ from keras.utils import np_utils
+ import keras
+
+
+ # CNNを構築する関数
+ def cnn():
+     model = Sequential()
+     model.add(Conv2D(filters=16, kernel_size=(4, 4), padding='same',
+                      input_shape=(50, 50, 1)))
+     model.add(Activation('relu'))
+     model.add(MaxPooling2D(pool_size=(2, 2), padding='same'))
+
+     model.add(Conv2D(filters=32, kernel_size=(3, 3), padding='same'))
+     model.add(Activation('relu'))
+     model.add(MaxPooling2D(pool_size=(2, 2), padding='same'))
+
+     model.add(Flatten())
+     model.add(Dense(units=32, activation='relu'))
+     model.add(Dropout(0.5))
+     model.add(Dense(units=5, activation='softmax'))
+     return model
+
+
+ # 学習中に学習曲線を表示，更新する
+ class LossHistory(keras.callbacks.Callback):
+     def __init__(self):
+         super().__init__()
+         self.train_acc = []
+         self.train_loss = []
+         self.val_acc = []
+         self.val_loss = []
+
+     def on_epoch_end(self, epoch, logs=None):
+         if logs is None:
+             logs = {}
+         self.train_acc.append(logs['accuracy'])
+         self.val_acc.append(logs['val_accuracy'])
+         self.train_loss.append(logs['loss'])
+         self.val_loss.append(logs['val_loss'])
+
+         plt.figure(num=1, clear=True)
+         ax1 = plt.subplot(111)
+         plt.title('Learning Curve')
+         ax1.set_xlabel('Epoch')
+         ax1.set_ylabel('Accuracy')
+         ax1.plot(self.train_acc, label='Train Acc',
+                  linestyle='--', color='sandybrown')
+         ax1.plot(self.val_acc, label='Valid Acc',
+                  color='tomato')
+         ax1.grid(linestyle='--')
+
+         ax2 = ax1.twinx()
+         ax2.plot(self.train_loss, label='Train Loss',
+                  linestyle='--', color='lightblue')
+         ax2.plot(self.val_loss, label='Valid Loss',
+                  color='royalblue')
+         ax2.set_ylabel('Loss')
+         h1, lab1 = ax1.get_legend_handles_labels()
+         h2, lab2 = ax2.get_legend_handles_labels()
+         ax2.legend(h1 + h2, lab1 + lab2, loc='center right',
+                    fancybox=False, edgecolor="black",
+                    borderpad=0.5)
+         plt.pause(0.1)
+
+
+ # ここからメイン
+ img = []
+ label = []
+ folder = glob.glob('手書き文字認識データセット/*')
+ for i, f in enumerate(folder):
+     categ = glob.glob(f+'/*.png')
+     for j in range(len(categ)):
+         tmp = np.asarray(Image.open(categ[j]))
+         img.append(tmp[:, :, 0])
+         label.append(i)
+ img = np.array(img)/255
+ img = img.reshape((350, 50, 50, 1))
+
+ xt, xv, yt, yv = train_test_split(img, np.array(label, np.int),
+                                   test_size=0.25,
+                                   shuffle=True, stratify=np.array(label, np.int))
+ cnn_model = cnn()
+ cnn_model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
+ cnn_model.fit(x=xt,
+               y=np_utils.to_categorical(yt, 5),
+               batch_size=16,
+               epochs=30,
+               validation_data=(xv, np_utils.to_categorical(yv, 5)),
+               callbacks=[LossHistory()])
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+<!---->
+
+
+
+    <div class="pre-footer"></div>
+    <footer class="text-center bg-dark text-white fixed-bottom">
+        <p class="py-2" style="margin-bottom: 0">
+            <span style="font-size: x-small">Copyright</span>
+            <b>Kamozawa</b>
+            <span style="font-size: x-small">All Rights Reserved.</span>
+        </p>
+        <p class="address" style="margin-bottom: 2px; font-size: small;">
+<!--            秋田大学 大学院理工学研究科 理工1号館 3階 333室-->
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=python&skin=desert"></script>
+</body>
+
+</html>

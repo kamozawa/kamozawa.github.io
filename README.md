@@ -1,1 +1,0 @@
-# kamozawa.github.io
