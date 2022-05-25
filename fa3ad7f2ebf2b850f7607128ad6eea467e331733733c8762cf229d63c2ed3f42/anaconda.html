@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./index.css">
 
 </head>
-<body>
+<body onload="prettyPrint()">
 <!-- ナビゲーションメニュー -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand text-dark" href="./index.html">KMZW </a>
@@ -89,7 +89,7 @@
                     <p>
                         以下のコマンドで新たな仮想環境を作成します。
                     </p>
-                    <pre><code> conda create -n 環境名 python=x.x</code></pre>
+                    <pre class="prettyprint"><code> conda create -n 環境名 python=x.x</code></pre>
 
                     <p>
                         環境名は全角文字が入っていなければ何でもOKです。xには導入したいPythonのバージョンを入力します。<br>
@@ -143,9 +143,10 @@
                         Pythonのコードを書くので，左メニューから"Pure Python"を選択します。<br>
                         「Location」では，コード（プロジェクト）を保存するフォルダのパスを指定します。<br>
                     </p>
+                    <div class="alert alert-warning" style="margin-right: -0.25rem">
                     <p>
                         <strong>ここからは結構重要です。</strong><br>
-                        「Python Interpreter」の設定では，プルダウンメニューから"Conda"を選択します。
+                        「Python Interpreter」では，プルダウンメニューから"Conda"を選択します。
                     </p>
                     <p>
                         Condaが選択された時点で，すでに存在する環境を自動検索してくれる場合がありますが，そうでない場合は，
@@ -153,6 +154,7 @@
                         普通は"C:/Users/ユーザ名/Anaconda3/envs"下に環境のファイルがありますので，注意して確認してください。<br>
 
                     </p>
+                    </div>
                     <p>
                         <span style="color: #B20000; font-weight: bold">
                               インタプリタ設定が合わないとコードが実行できないので，しっかりと確認を！</span>
@@ -166,7 +168,7 @@
                     </p>
 
                 </div>
-                <div class="col" style="margin-top: -3rem; margin-right: -3rem">
+                <div class="col" style="margin-top: -3rem; margin-right: -5rem">
 <!--                    <img src="../contents/pycharm1.png" alt="Pycharm Running" width="519" height="291">-->
                     <img src="../contents/new_project.png" alt="New Project" width="589" height="482">
                 </div>
@@ -198,25 +200,27 @@
             まず，例によってAnaconda Promptを起動しましょう。
             起動できたら，
         </p>
-        <pre><code>conda activate 環境名</code></pre>
+        <pre class="prettyprint"><code>conda activate 環境名</code></pre>
         <p class="align-main">
             と打ちます。<br>
             すると，(base)環境だった表示が，作成した環境名に変わっていると思います。<br>
             その状態で，
         </p>
-        <pre><code>conda install パッケージ名                   または，
+        <pre class="prettyprint"><code>conda install パッケージ名
 conda install -c conda-fore パッケージ名</code></pre>
         <p class="align-main">
-            と入力します。<br>
+            のどちらかを入力します。<br>
             うまく行けば，何かごちゃごちゃ出てきて[y/n]の選択を迫られるので，"y"を入力してやればインストールできます。<br>
 
         </p>
+        <div class="alert alert-secondary">
         <p class="align-main">
             ごちゃごちゃ出てきたのにインストールできなかった場合は，モジュール名を間違えているか，そもそもCondaで配布されていない，ということになります。<br>
             モジュール名と，インストール時に入力する名前が異なる場合もあるので，注意してください。<br>
             <span style="font-size: smaller; color: #842029">
             （たとえば，scikit-learnというパッケージは，conda install sklearnと打たないとインストールできません）</span>
         </p>
+        </div>
         <p class="align-main">
             Condaで配布されていなくても，GitHubから落としてローカルに配置するという力技も可能なので，インストールに失敗しても諦めないでくださいね。<br>
             学内ネットワークでインストールする場合は，プロキシ設定が効いてくる場合もあるので，全然インストールできない！となったら聞いてください。
@@ -243,4 +247,5 @@ conda install -c conda-fore パッケージ名</code></pre>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=html&skin=sons-of-obsidian"></script>
 </body>
